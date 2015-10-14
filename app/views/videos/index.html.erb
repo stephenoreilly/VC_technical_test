@@ -16,7 +16,7 @@
       <tr>
         <td><%= video.name %></td>
         <% if current_user %>
-          <td><%= current_user.watched? video %></td>
+        <td><%=VideoUser.find_by_user_id_and_video_id(current_user.id,video.id).iterations %></td>
         <% end %>
         <td><%= link_to 'Show', video %></td>
         <td><%= link_to 'Edit', edit_video_path(video) %></td>
