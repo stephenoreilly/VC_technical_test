@@ -46,4 +46,5 @@ gem "better_errors"
 gem 'compass-rails', '~> 2.0.4'
 gem "font-awesome-rails"
 gem 'r_kit', '~> 0.2.1.1'
-gem 'rspec-rails', '~> 3.0.0'
+gem 'rspec-rails', '3.2.3'
+gem 'capybara', '2.4.4'
