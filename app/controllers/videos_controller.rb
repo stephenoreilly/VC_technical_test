@@ -12,7 +12,12 @@ class VideosController < ApplicationController
   def show
     #current_user.try :watch_video, @video
     current_user.try :update_badges, Badge.all
-    @count = VideoUser.find_by_user_id_and_video_id(current_user.id,@video.id).iterations
+    v_u = VideoUser.find_by_user_id_and_video_id(current_user.id,@video.id)
+    if v_u.nil?
+      @count = 0
+    else
+      @count = VideoUser.find_by_user_id_and_video_id(current_user.id,@video.id).iterations
+    end
   end
 
   def play
