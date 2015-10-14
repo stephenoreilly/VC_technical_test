@@ -11,6 +11,7 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     current_user.try :watch_video, @video
+    current_user.try :update_badges, Badge.all
   end
 
   # GET /videos/new
