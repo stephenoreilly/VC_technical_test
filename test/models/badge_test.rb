@@ -5,3 +5,5 @@ class BadgeTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
+
