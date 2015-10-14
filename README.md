@@ -1,3 +1,39 @@
+########
+Re: My Solution - Stephen O'Reilly
+
+Part 1:
+
+I took a look at the Decorator rkit. It is being used to add the infos method functionality to the Users class.
+I didn't see how I could use it in a way that would make it clearer than the method I chose so essentially I ignored the tip and carried on the best way I could.
+
+I created an array with the Users that had the same company as the company selected for the show action.
+I then created a Hash from the Array with the badge as the key and the count as the value
+
+The information fromt he Hash table is diplayed by passing the hash table to the view.
+
+Part 2:
+
+As the names of the badges are all "hard-coded" and the test to check whether a Badge should be allocated is very specific to the badge I found it difficult to make this generic.
+
+I have tried to make it as clear as possible what needs to be done in the case of adding a new Badge.
+
+The functionality has been added to the User model. I looked at adding this functionality to the BadgeUser class but this would be effectively making this class "UserBadges" as Badge User only has information partaining to one Badge. As a result I thought it made most sense to add this functionality to the User model.
+
+Part 3:
+
+I thought that adding AJAX to carry out the Play functionality might make it confusing as to what I was trying to do, so instead I went with the method of routing to a "Play" action for the VideoController and the redirecting the User back to the Video Path for that particular Video.
+
+I've added an iterations Column to the VideoUsers table using a migration file. The default for this column is set to 0. I have updated the User>>watch_video _method so that a video is only added to the videos Array if it has not been watched already.
+
+Part 4:
+
+I have added feature tests using Caybara for all the functionality that was requested in Challenge 1..3. These can be run by running command rspec spec/features.
+
+The main challenge I found with this was clicking on the correct 'Show' for videos when testing the functionality of Updating the Badges when a user has has met the correct criteria. I chose to use all(:link, 'Show')[2].click.
+This clicks on the element chosen from the Array. This is not the prettiest solution but it does work. This could be changed by changing the 'Show' link to include a reference to the name of the Video but I decided to leave it like this for my solution as I did not want to change the layout too much.
+
+
+########
 ## Badge Challenges Application
 
 ### Overview of the application
