@@ -23,6 +23,8 @@ Part 3:
 
 I thought that adding AJAX to carry out the Play functionality might make it confusing as to what I was trying to do, so instead I went with the method of routing to a "Play" action for the VideoController and the redirecting the User back to the Video Path for that particular Video.
 
+-Adding the "Play" action allows watch_video and increase_iterations to be called within this action
+
 I've added an iterations Column to the VideoUsers table using a migration file. The default for this column is set to 0. I have updated the User>>watch_video _method so that a video is only added to the videos Array if it has not been watched already.
 
 Part 4:

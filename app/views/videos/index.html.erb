@@ -6,6 +6,7 @@
       <th>Name</th>
       <% if current_user %>
         <th>Watched?</th>
+        <th>Count</th>
       <% end %>
       <th colspan="3"></th>
     </tr>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= video.name %></td>
         <% if current_user %>
+        <td><%= current_user.watched? video %></td>
         <td><% if !VideoUser.find_by_user_id_and_video_id(current_user.id,video.id).nil? %>
             <%=VideoUser.find_by_user_id_and_video_id(current_user.id,video.id).iterations %>
           <% else %>
