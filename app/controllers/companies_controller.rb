@@ -10,6 +10,15 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    # Find all the users that have the same company
+    users = User.all.select {|u| u.company == @company}
+    # Create an array of all the badges the users
+    users_badges = users.collect {|u| u.badges }.flatten
+
+    # Create a hash with the badges and user count for that company
+    @badge_count_hash = users_badges.each_with_object(Hash.new(0)){
+                            |badge,hash| hash[badge] += 1}
+
   end
 
   # GET /companies/new

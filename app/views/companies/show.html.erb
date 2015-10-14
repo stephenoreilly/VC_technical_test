@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<%= @company %>
+
+<% if @badge_count_hash %>
+  <% @badge_count_hash.keys.each do |badge| %>
+  <p>
+    <%= badge.name %>
+    <%= @badge_count_hash[badge] %>
+  </p>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
