@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :videos
-
+  get "videos/:id/play" => "videos#play"
+  
   resources :badges
 
   resources :users

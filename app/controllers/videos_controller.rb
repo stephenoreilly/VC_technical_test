@@ -10,8 +10,16 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    current_user.try :watch_video, @video
+    #current_user.try :watch_video, @video
     current_user.try :update_badges, Badge.all
+    @count = VideoUser.find_by_user_id_and_video_id(current_user.id,@video.id).iterations
+  end
+
+  def play
+    v = Video.find(params['id'])
+    current_user.try :watch_video, v
+    VideoUser.find_by_user_id_and_video_id(current_user.id,v.id).try :increase_iterations
+    redirect_to :controller => 'videos', :action => 'show', :id => params['id']
   end
 
   # GET /videos/new

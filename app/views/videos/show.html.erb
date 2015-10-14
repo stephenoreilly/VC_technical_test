@@ -7,8 +7,18 @@
 
 <% if current_user %>
   <p>
+    <%= link_to "Play", :controller => :videos, :action => :play, :id => @video.id  %>
+  </p>
+  <p>
+    <strong>Viewed</strong>
+  </p>
+  <p>
     <strong>Watched?:</strong>
     <%= current_user.watched? @video %>
+  </p>
+  <p>
+    <strong>Count:</strong>
+    <%= @count %>
   </p>
 <% end %>
 

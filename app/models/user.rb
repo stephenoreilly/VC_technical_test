@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
   end
 
   def watch_video video
-    videos << video
+    if !watched? video
+      videos << video
+    end
   end
 
   def watched? video
@@ -40,23 +42,23 @@ class User < ActiveRecord::Base
       self.badges << badges.detect{|b| b.name == SPEEDRUN}
     end
   end
-  
+
   def has_completed_speed_run?
     (self.videos.uniq.size == 1) and (self.videos.first.name.to_sym == RUBY_CLASSES_NAME)
   end
-  
+
   def add_half_way_if_required badges
     if (self.videos.uniq.size >= 2 and (self.does_not_have_badge? HALFWAY))
       self.badges << badges.detect{|b| b.name == HALFWAY}
     end
   end
-  
+
   def add_all_way_if_required badges
     if (self.videos.uniq.size >= Video.all.size and self.does_not_have_badge? ALLWAY)
       self.badges << badges.detect{|b| b.name == ALLWAY}
     end
   end
-  
+
   def does_not_have_badge? badge_name
     !self.badges.collect{|b| b.name}.include? badge_name
   end
